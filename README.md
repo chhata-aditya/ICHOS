@@ -2,6 +2,12 @@
 
 An AI-powered multimodal adaptive music player — music for the moment.
 
+## Live app
+
+- [Open ICHOS on GitHub Pages](https://chhata-aditya.github.io/ICHOS/)
+- [Open ICHOS on Render](https://ichos-player-web.onrender.com/)
+- [Deployment guide](DEPLOYMENT.md)
+
 ## Phase 1 status
 
 React foundation with a local-audio demo player, text/image Vibe Profile analysis, and gesture controls. Music-provider integration and licensed lyrics are still pending.

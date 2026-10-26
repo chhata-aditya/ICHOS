@@ -7,6 +7,7 @@ This document describes the current production setup for ICHOS, how the pieces c
 | Part | Host | URL |
 | --- | --- | --- |
 | React app | Render Static Site (`ichos-player-web`) | <https://ichos-player-web.onrender.com> |
+| React app | GitHub Pages | <https://chhata-aditya.github.io/ICHOS/> |
 | Node API | Render Web Service (`ichos-api`) | <https://ichos-api.onrender.com> |
 | API health | Node API | <https://ichos-api.onrender.com/api/health> |
 | Gesture service | Render Web Service (`ichos-gesture`) | <https://ichos-gesture.onrender.com> |
@@ -48,7 +49,9 @@ The service's health endpoint returns whether these variables are configured, bu
 
 Push changes to the `main` branch of the GitHub repository. The linked Render services build and deploy from that branch. The GitHub Actions workflow at `.github/workflows/deploy.yml` also builds the client and publishes a GitHub Pages artifact.
 
-The active app URL is the Render static site listed above. The GitHub Pages URL (`https://chhata-aditya.github.io/ICHOS/`) currently displays the repository README because the repository's Pages source is still using branch publishing. The Pages workflow can complete successfully without changing that source setting. To make GitHub Pages serve the React app, a repository administrator must select **Settings → Pages → Build and deployment → GitHub Actions**. Vite uses `/ICHOS/` as its base path in the GitHub Actions build and `/` for the Render static site.
+The React app is available from both Render and GitHub Pages. The repository's Pages source publishes the root of `main`, so the production bundle (`index.html`, `assets/`, `audio/`, `images/`, and `.nojekyll`) is committed at the repository root. `404.html` is a copy of the app shell for client-side routes. The GitHub Actions workflow also builds and deploys the `client/dist/` artifact. Vite uses `/ICHOS/` as its base path for GitHub Pages and `/` for the Render static site.
+
+When changing client code, rebuild the Pages bundle with `GITHUB_ACTIONS=true`, copy the contents of `client/dist/` to the repository root, copy `client/dist/index.html` to root `404.html`, and push those generated files with the code change. Render builds its frontend from `client/` automatically.
 
 ### Blueprint or service configuration
 
