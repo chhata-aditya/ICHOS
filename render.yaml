@@ -34,7 +34,6 @@ services:
   - type: web
     name: ichos-player-web
     runtime: static
-    plan: free
     rootDir: client
     buildCommand: npm ci && npm run build
     staticPublishPath: dist
