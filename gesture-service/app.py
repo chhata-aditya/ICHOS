@@ -1,4 +1,5 @@
 import asyncio
+import os
 from time import monotonic
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
@@ -13,6 +14,14 @@ app = FastAPI(
 
 MAX_FRAME_BYTES = 1_000_000
 COMMAND_COOLDOWN_SECONDS = 0.6
+ALLOWED_ORIGINS = set(
+    origin.strip()
+    for origin in os.getenv(
+        "GESTURE_ALLOWED_ORIGINS",
+        "https://chhata-aditya.github.io, http://localhost:5173, http://127.0.0.1:5173",
+    ).split(",")
+    if origin.strip()
+)
 
 
 @app.get("/health")
@@ -28,6 +37,11 @@ def health():
 async def gesture_socket(
     websocket: WebSocket
 ):
+
+    origin = websocket.headers.get("origin")
+    if origin not in ALLOWED_ORIGINS:
+        await websocket.close(code=1008)
+        return
 
     await websocket.accept()
 

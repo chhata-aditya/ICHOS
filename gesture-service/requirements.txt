@@ -1,5 +1,5 @@
 fastapi>=0.115,<0.142
 uvicorn[standard]>=0.34,<0.53
-opencv-python>=4.10,<5
+opencv-python-headless>=4.10,<5
 mediapipe==0.10.21
 numpy>=1.26,<2

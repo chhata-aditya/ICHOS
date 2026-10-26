@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import usePlayer from '../hooks/usePlayer';
 import './GestureController.css';
 
-const websocketUrl = import.meta.env.VITE_GESTURE_WS_URL || 'ws://127.0.0.1:8000/ws';
+const websocketUrl = import.meta.env.VITE_GESTURE_WS_URL
+  || (import.meta.env.PROD ? 'wss://ichos-gesture.onrender.com/ws' : 'ws://127.0.0.1:8000/ws');
 const FRAME_INTERVAL_MS = 100;
 
 function GestureController() {
@@ -80,6 +81,8 @@ function GestureController() {
       const video = videoRef.current;
       const canvas = canvasRef.current;
       if (!ownsSession() || !socket || socket.readyState !== WebSocket.OPEN) return;
+      // Avoid building a queue of stale frames if inference/network slows down.
+      if (socket.bufferedAmount > 500_000) return;
       if (!video || !canvas || !video.videoWidth || !video.videoHeight) return;
 
       canvas.width = 320;

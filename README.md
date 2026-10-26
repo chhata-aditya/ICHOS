@@ -12,7 +12,7 @@ React foundation with a local-audio demo player and text/image Vibe Profile anal
 ichos/
 ├── client/     # Vite + React frontend
 ├── server/     # Express NLP / image-analysis API
-├── gesture-service/ # Local webcam gesture-recognition WebSocket service
+├── gesture-service/ # Webcam gesture-recognition WebSocket service (local + Render)
 ├── README.md
 └── .gitignore
 ```
@@ -51,7 +51,7 @@ pip install -r requirements.txt
 uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 
-On the Player page, switch **Gesture Control** on and allow camera permission. The camera stream closes immediately when the switch turns off.
+On the Player page, switch **Gesture Control** on and allow camera permission. The camera stream closes immediately when the switch turns off. The hosted GitHub Pages client connects to the `ichos-gesture` Render service using secure WebSockets. The service processes webcam frames in memory and does not save them. Render's free instance may sleep while idle, delaying the first connection; an always-on plan gives more consistent real-time response.
 
 ## Routes
 
