@@ -4,7 +4,7 @@ An AI-powered multimodal adaptive music player — music for the moment.
 
 ## Phase 1 status
 
-React foundation with a local-audio demo player and text/image Vibe Profile analysis. Music-provider integration, licensed lyrics, and gesture control are still pending.
+React foundation with a local-audio demo player, text/image Vibe Profile analysis, and gesture controls. Music-provider integration and licensed lyrics are still pending.
 
 ## Project structure
 
@@ -51,7 +51,9 @@ pip install -r requirements.txt
 uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 
-On the Player page, switch **Gesture Control** on and allow camera permission. The camera stream closes immediately when the switch turns off. The hosted GitHub Pages client connects to the `ichos-gesture` Render service using secure WebSockets. The service processes webcam frames in memory and does not save them. Render's free instance may sleep while idle, delaying the first connection; an always-on plan gives more consistent real-time response.
+On the Player page, switch **Gesture Control** on and allow camera permission. The camera stream closes immediately when the switch turns off. The hosted client connects to the `ichos-gesture` Render service using secure WebSockets. The service processes webcam frames in memory and does not save them. Render's free instance may sleep while idle, delaying the first connection; an always-on plan gives more consistent real-time response.
+
+The complete hosted React app is deployed as the Render static site `ichos-player-web`, with the API and gesture-service URLs configured at build time.
 
 ## Routes
 

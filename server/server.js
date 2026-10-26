@@ -8,7 +8,11 @@ const musicRoutes = require('./routes/musicRoutes');
 const app = express();
 const port = Number(process.env.PORT || 5000);
 
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173' }));
+const allowedClientOrigins = (process.env.CLIENT_ORIGINS || process.env.CLIENT_ORIGIN || 'http://localhost:5173')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+app.use(cors({ origin: allowedClientOrigins }));
 app.use(express.json({ limit: '100kb' }));
 
 app.get('/api/health', (req, res) => {

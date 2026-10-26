@@ -15,6 +15,8 @@ services:
         sync: false          # set manually in dashboard
       - key: YOUTUBE_API_KEY
         sync: false          # set manually in dashboard
+      - key: CLIENT_ORIGINS
+        value: https://chhata-aditya.github.io,https://ichos-player-web.onrender.com,http://localhost:5173,http://127.0.0.1:5173
 
   - type: web
     name: ichos-gesture
@@ -26,3 +28,31 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.8
+      - key: GESTURE_ALLOWED_ORIGINS
+        value: https://chhata-aditya.github.io,https://ichos-player-web.onrender.com,http://localhost:5173,http://127.0.0.1:5173
+
+  - type: web
+    name: ichos-player-web
+    runtime: static
+    plan: free
+    rootDir: client
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://ichos-api.onrender.com/api
+      - key: VITE_GESTURE_WS_URL
+        value: wss://ichos-gesture.onrender.com/ws
+    routes:
+      - type: rewrite
+        source: /player
+        destination: /index.html
+      - type: rewrite
+        source: /search
+        destination: /index.html
+      - type: rewrite
+        source: /vibe
+        destination: /index.html
+      - type: rewrite
+        source: /visualizer
+        destination: /index.html
