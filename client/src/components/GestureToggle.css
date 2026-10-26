@@ -1,0 +1,68 @@
+.gesture-toggle__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.gesture-toggle__label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.gesture-toggle__switch {
+  position: relative;
+  min-width: 92px;
+  height: 38px;
+  padding: 0 14px 0 42px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  transition: all 0.3s var(--ease);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.gesture-toggle__switch.is-on {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  padding: 0 42px 0 14px;
+  justify-content: flex-start;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.gesture-toggle__knob {
+  position: absolute;
+  top: 5px;
+  left: 6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s var(--ease-bounce);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.gesture-toggle__switch.is-on .gesture-toggle__knob {
+  left: calc(100% - 32px);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  box-shadow: 0 0 14px var(--accent-glow);
+}
+
+.gesture-toggle__text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.gesture-toggle__hint {
+  margin: 14px 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-weight: 300;
+}

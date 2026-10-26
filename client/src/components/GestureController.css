@@ -1,0 +1,91 @@
+.gesture-controller {
+  margin-top: 18px;
+}
+
+.gesture-controller__video-wrap {
+  position: relative;
+  width: min(100%, 320px);
+  aspect-ratio: 4 / 3;
+  display: block;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  background: #000;
+}
+
+/* Sci-fi HUD Corner Brackets */
+.gesture-controller__video-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(229, 169, 98, 0.25);
+  border-radius: calc(var(--radius-sm) - 2px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.gesture-controller__preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+  display: block;
+}
+
+.gesture-controller__hud-badge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(7, 7, 10, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 5;
+  pointer-events: none;
+  animation: hud-pop 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.gesture-controller__hud-text {
+  font-family: var(--font-display, sans-serif);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 24px var(--accent-glow);
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background-color: rgba(18, 18, 24, 0.85);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-glow);
+}
+
+@keyframes hud-pop {
+  0% { opacity: 0; transform: scale(0.8); }
+  20% { opacity: 1; transform: scale(1.06); }
+  35% { opacity: 1; transform: scale(1); }
+  75% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.95); }
+}
+
+.gesture-controller__status {
+  margin: 12px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-strong);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.gesture-controller__command {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 400;
+  text-transform: capitalize;
+}

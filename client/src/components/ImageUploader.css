@@ -1,0 +1,9 @@
+.image-uploader__input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+.image-uploader__dropzone { width: 100%; min-height: 180px; padding: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border: 1px dashed var(--border-strong); border-radius: var(--radius); color: var(--text); transition: border-color .2s var(--ease), background .2s var(--ease); }
+.image-uploader__dropzone:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-soft); }
+.image-uploader__dropzone small, .image-uploader__error { color: var(--text-muted); font-size: .75rem; }
+.image-uploader__preview-wrap { display: flex; align-items: flex-start; gap: 16px; }
+.image-uploader__preview { width: 140px; height: 140px; border-radius: var(--radius-sm); object-fit: cover; border: 1px solid var(--border); }
+.image-uploader__remove { padding: 8px 12px; }
+.image-uploader__error { margin: 8px 0 0; color: #e78a8a; }
+@media (max-width: 480px) { .image-uploader__preview-wrap { flex-direction: column; } }

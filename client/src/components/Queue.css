@@ -1,0 +1,73 @@
+.queue__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.queue__count {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.queue__clear {
+  padding: 6px 14px;
+  font-size: 0.8rem;
+}
+
+.queue__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.queue__play {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  text-align: left;
+  transition: background 0.2s var(--ease);
+}
+
+.queue__play:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.queue__play img {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: var(--surface);
+}
+
+.queue__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.queue__title {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.queue__artist {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.queue__now {
+  margin: 14px 0 0;
+  font-size: 0.8rem;
+  color: var(--accent-strong);
+}

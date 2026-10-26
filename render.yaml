@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ichos-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: CLIENT_ORIGIN
+        sync: false          # set manually in dashboard
+      - key: OPENAI_API_KEY
+        sync: false          # set manually in dashboard
+      - key: YOUTUBE_API_KEY
+        sync: false          # set manually in dashboard
