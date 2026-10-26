@@ -62,6 +62,4 @@ On the Player page, switch **Gesture Control** on and allow camera permission. T
 | `/vibe` | Vibe |
 | `/player` | Player |
 
-## Documentation
 
-- [Phase 1 documentation](docs/PHASE1.md) — what was built, how to run, structure, and limits
