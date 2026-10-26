@@ -1,4 +1,6 @@
 /** Local development track catalog */
+const publicAsset = (path) => `${import.meta.env.BASE_URL}${path}`;
+
 export const mockTracks = [
   {
     id: 'last-kiss-of-nebulon',
@@ -6,8 +8,8 @@ export const mockTracks = [
     artist: 'Tory Lanez',
     album: 'Local',
     duration: '0:00',
-    artwork: '/images/last-kiss-of-nebulon-cover.jpg',
-    audioUrl: '/audio/last-kiss-of-nebulon.mp3',
+    artwork: publicAsset('images/last-kiss-of-nebulon-cover.jpg'),
+    audioUrl: publicAsset('audio/last-kiss-of-nebulon.mp3'),
   },
 
   {
@@ -16,8 +18,8 @@ export const mockTracks = [
     artist: 'Travis Scott',
     album: 'Local',
     duration: '0:00',
-    artwork: '/images/last-kiss-of-nebulon-cover.jpg',
-    audioUrl: '/audio/Travis Scott - PBT (no Vybz Kartel version).mp3',
+    artwork: publicAsset('images/last-kiss-of-nebulon-cover.jpg'),
+    audioUrl: publicAsset('audio/Travis Scott - PBT (no Vybz Kartel version).mp3'),
   },
 
   {
@@ -26,8 +28,8 @@ export const mockTracks = [
     artist: 'Lana Del Rey',
     album: 'Local',
     duration: '0:00',
-    artwork: '/images/last-kiss-of-nebulon-cover.jpg',
-    audioUrl: '/audio/Lana Del Rey - First Light (Lyric Video) (1).mp3',
+    artwork: publicAsset('images/last-kiss-of-nebulon-cover.jpg'),
+    audioUrl: publicAsset('audio/Lana Del Rey - First Light (Lyric Video) (1).mp3'),
   },
 ];
 
